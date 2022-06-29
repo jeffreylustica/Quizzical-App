@@ -1,14 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 
-export default function Question() {
+export default function Question(props) {
+    const choicesElement =  props.choicesArr.map(choice => {
+        return <button key={choice.option} className={choice.isSelected? "answer-btn selected" : "answer-btn"} onClick={() => {
+            props.handleUserAnswer(props.question, choice.option)
+        }}>{choice.option}</button>
+    })
+
     return (
         <div className="question-container">
-            <p className="question">How would one say goodbye in Spanish?</p>
+            <p className="question">{props.question}</p>
             <div className="answer-choices">
-                <button className="answer-btn">answer1</button>
-                <button className="answer-btn">answer2</button>
-                <button className="answer-btn">answer3</button>
-                <button className="answer-btn">answer4</button>
+                {choicesElement}
             </div>
         </div>
     )
