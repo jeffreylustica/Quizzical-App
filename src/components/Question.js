@@ -1,8 +1,16 @@
-import React, { useState } from "react"
+import React from "react"
 
 export default function Question(props) {
     const choicesElement =  props.choicesArr.map(choice => {
-        return <button key={choice.option} className={choice.isSelected? "answer-btn selected" : "answer-btn"} onClick={() => {
+        let btnClassName = ""
+        if (props.isGameStarted) {
+            choice.isSelected? btnClassName = "answer-btn selected" : btnClassName = "answer-btn"
+        } else {
+            choice.isSelected && choice.isCorrect ? btnClassName = "answer-btn selected" : choice.isSelected ? btnClassName = "answer-btn selected" : choice.isCorrect ? btnClassName = "answer-btn danger" :
+            btnClassName = "answer-btn fade"  
+        }
+
+        return <button key={choice.option} className={btnClassName} onClick={() => {
             props.handleUserAnswer(props.question, choice.option)
         }}>{choice.option}</button>
     })

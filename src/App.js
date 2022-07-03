@@ -10,9 +10,11 @@ export default function App() {
   const [scoreCount, setScoreCount] = useState(0)
 
   function startQuiz() {
+    document.documentElement.scrollTop = 0
     setShowModal(false)
     setIsGameStarted(true)
     setFetchData(prevData => prevData + 1)
+    setScoreCount(0)
   }
 
   useEffect(() => {
@@ -20,9 +22,9 @@ export default function App() {
       const res = await fetch('https://opentdb.com/api.php?amount=10')
       const data = await res.json()
       const quizData = data.results.map(data => {
-        const choicesArr = [{option: data.correct_answer, isSelected: false}]
+        const choicesArr = [{option: data.correct_answer, isSelected: false, isCorrect: true}]
         data.incorrect_answers.forEach(incorrectAns => {
-            choicesArr.push({option: incorrectAns, isSelected: false})
+            choicesArr.push({option: incorrectAns, isSelected: false, isCorrect: false})
         })
         choicesArr.sort(function(a, b){return 0.5 - Math.random()})
 

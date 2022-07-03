@@ -3,7 +3,7 @@ import Question from "./Question"
 
 export default function Main(props) {  
     const questions = props.quizzes.map((quiz) => {
-        const {question, correct_answer, incorrect_answers, shuffled_choices} = quiz
+        const {question, correct_answer, shuffled_choices} = quiz
         return (
             <Question 
                 key= {question}
@@ -11,6 +11,7 @@ export default function Main(props) {
                 choicesArr = {shuffled_choices}
                 correct_answer = {correct_answer}
                 handleUserAnswer = {props.handleUserAnswer}
+                isGameStarted = {props.isGameStarted}
             />
         )
     })
@@ -21,14 +22,10 @@ export default function Main(props) {
                 {questions}
             </div>
             <div className="main-button-placeholder">
-                {!props.isGameStarted && <p className="score">{props.scoreCount > 7 && "Awesome! "}You scored {props.scoreCount}/10 correct answers</p>}
+                {!props.isGameStarted && <p className="score">{props.scoreCount > 5 && "Awesome! "}You scored {props.scoreCount}/10 correct answers</p>}
                 <button className="main-btn btn" onClick={(e) => {
-                    if (e.target.textContent === "Check answers") {
-                        props.handleCheckAnswers()
-                    } else {
-                        props.handleStartBtn()
-                    }
-                    
+                    e.target.textContent === "Check answers" ? props.handleCheckAnswers() :
+                    props.handleStartBtn()                   
                 }}>{props.isGameStarted ? "Check answers" : "Play Again"}</button>
             </div>
         </div>

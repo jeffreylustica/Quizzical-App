@@ -19,6 +19,7 @@
 
   --clr-ligth: #F5F7FB;
   --clr-main: #4D5B9E;
+  --clr-bg-intro: #e4eeff;
   --clr-accent: #94D7A2;
   --clr-danger: #F8BCBC;
 }
@@ -79,7 +80,7 @@ h1, p {
 
 .intro-btn:hover {
   transform: scale(1.1);
-  background-color: var(--clr-ligth);
+  background-color: var(--clr-bg-intro);
   color: var(--clr-main);
   border: 1px solid var(--clr-main);
 }
@@ -127,6 +128,16 @@ h1, p {
   border: 1px solid var(--clr-accent);
 }
 
+.danger {
+  background-color: var(--clr-danger);
+  border: 1px solid var(--clr-danger);
+  opacity: .75;
+}
+
+.fade {
+  opacity: .5;
+}
+
 /* layout */
 /* Intro */
 .intro-overlay {
@@ -136,7 +147,7 @@ h1, p {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--clr-ligth);
+  background-color: var(--clr-bg-intro);
   z-index: 10;
   overflow: hidden;
   transition: all .6s ease-in-out 0s;
@@ -185,17 +196,11 @@ h1, p {
 }
 
 .main-button-placeholder {
-  margin: 1.5em 0;
+  margin: 2em 0 4em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 -2px 5px;
-  background-color: var(--clr-ligth); */
 }
 
 @media (min-width: 435px) {
