@@ -4,6 +4,8 @@ export default function Intro(props) {
 
     return (
         <div className={props.showModal ? "intro-overlay" : "intro-overlay clicked"}>
+            <div className="page-circle-1"></div>
+            <div className="page-circle-2"></div>
             <div className="intro">
                 <h1 className="intro-title">Quizzical</h1>
                 <p className="intro-desc">Some description if needed</p>

@@ -10,14 +10,14 @@ export default function Question(props) {
             btnClassName = "answer-btn fade"  
         }
 
-        return <button key={choice.option} className={btnClassName} onClick={() => {
+        return <button key={choice.id} className={btnClassName} onClick={() => {
             props.handleUserAnswer(props.question, choice.option)
-        }}>{choice.option}</button>
+        }}>{decodeURIComponent(choice.option)}</button>
     })
 
     return (
         <div className="question-container">
-            <p className="question">{props.question}</p>
+            <p className="question">{decodeURIComponent(props.question)}</p>
             <div className="answer-choices">
                 {choicesElement}
             </div>
